@@ -25,7 +25,7 @@ const HomePage = (props) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const client = await MongoClient.connect(
         `mongodb+srv://${process.env.MONGODB_ACCOUNT}:${process.env.MONGODB_PWD}@cluster0.o0xro.mongodb.net/${process.env.MONGODB_COLLECTION}?retryWrites=true&w=majority`
     );
@@ -43,7 +43,6 @@ export const getStaticProps = async () => {
                 image: meetup.image,
             })),
         },
-        revalidate: 15,
     };
 };
 
